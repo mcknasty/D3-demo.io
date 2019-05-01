@@ -16,7 +16,7 @@
     .append("g")
       .attr("transform", "translate(" + elWidth/2 + "," + elHeight/2 + ")");
 
-  d3.json("/data/browser.json", function(error, data) {
+  d3.json("D3-demo.io/data/browser.json", function(error, data) {
     data.forEach(function(d) {
       d.value = +d.value;
     });

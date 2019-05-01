@@ -16,7 +16,7 @@
     .append("g")
     .attr("transform", "translate(" + elWidth/2 + "," + elHeight/2 + ")");
 
-  d3.json("/data/browser.json", function(error, data) {
+  d3.json("D3-demo.io/data/browser.json", function(error, data) {
     data.forEach(function(d) {
       d.value = +d.value;
     });
@@ -25,19 +25,19 @@
 
   function visualize(data) {
     // let's eat some pie
-		
+
 		var radius = Math.min(width, height) / 2
-		
+
 		var pie = d3.layout.pie()
 			.value(function(d){
 				return d.value;
 			})
-		
+
 		//arc function
 		var arc = d3.svg.arc()
 			.innerRadius(radius * 0.6)
 			.outerRadius(radius)
-			
+
 		function arcTween(a) {
 			var i = d3.interpolate(this._current, a)
 			this._current - i(0);
@@ -45,7 +45,7 @@
 				return arc(i(t));
 			}
 		}
-		
+
 		// set up arcs
 			/**
 		var arcs = svg.selectAll('.arc')
@@ -65,12 +65,12 @@
 					.attr('transform', 'scale(1)')
 			})
 			**/
-		
+
 		var color = d3.scale.category20c();
-		
+
 		var arcs = svg.selectAll('.arc')
-			.data(pie(data))	
-		
+			.data(pie(data))
+
 		arcs.enter()
 			.append('path')
 				.attr('class', 'arc')
@@ -83,7 +83,7 @@
 						endAngle: 0
 					}
 				});
-				
+
 		arcs.transition()
 				.duration(2000)
 				.attrTween('d', arcTween)
@@ -98,15 +98,15 @@
 							return d.data.browser + '-' + d.data.value
 						})
 						.attr('transform', 'translate(' + textTranslate + ')');
-						
+
 				svg.append("line")
 				    .style("stroke", "white")
 				    .attr("x1", centerOfArc[0])
 				    .attr("y1", centerOfArc[1])
 				    .attr("x2", textTranslate[0])
-				    .attr("y2", textTranslate[1]);  
+				    .attr("y2", textTranslate[1]);
 				})
-		
+
 		/**
 		arcs
 			.append('path')
@@ -115,7 +115,7 @@
 				return color(i);
 			})
 		**/
-		
+
 		//append tooltip
 		arcs.append('text')
 			.text(function(d) {

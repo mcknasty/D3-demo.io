@@ -16,7 +16,7 @@
      .append("g")
        .attr('transform', 'translate(' + margin.left + "," + margin.top + ')');
 
-  d3.json("/data/us-states.json", function(error, data) {
+  d3.json("D3-demo.io/data/us-states.json", function(error, data) {
     visualize(data);
   });
 

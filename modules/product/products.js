@@ -15,7 +15,7 @@
     .append('g')
       .attr('transform', 'translate(' + margin.left + "," + margin.top + ')');
 
-  d3.json('/data/products.json', function(error, data) {
+  d3.json('D3-demo.io/data/products.json', function(error, data) {
     visualize(data);
   });
 

@@ -16,7 +16,7 @@
      .append("g")
        .attr('transform', 'translate(' + margin.left + "," + margin.top + ')');
 
-  d3.json("/data/us-states.json", function(error, data) {
+  d3.json("D3-demo.io/data/us-states.json", function(error, data) {
     visualize(data);
   });
 
@@ -24,20 +24,20 @@
 		var projection = d3.geo.albersUsa()
 		.translate([width/2, height/2])
 		.scale([1200])
-		
+
 		var path = d3.geo.path()
 			.projection(projection);
-			
+
 		var format = d3.format(',');
-			
+
 		var tip = d3.tip()
 			.attr('class', 'd3-tip')
 			.html(function(d){
 				return d.place + ' - ' + format(d.views) + ' Views';
 			})
-		
+
 		svg.call(tip);
-			
+
 		svg.selectAll('path')
 			.data(data.features)
 			.enter()
@@ -45,7 +45,7 @@
 			.attr('d', path)
 			.attr('fill', '#6c789c')
 			.attr('stroke', '#8893A4');
-		
+
 		//add cities
 		d3.csv('/data/us-cities.csv', function(pointData){
 			svg.selectAll('circle')
@@ -73,10 +73,10 @@
 					return Math.sqrt(value * 0.008)
 				})
 				.style('opacity', '0.75')
-				
+
 		})
-		
-		
+
+
   }
 
 }());
