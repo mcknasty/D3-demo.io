@@ -47,7 +47,7 @@
 			.attr('stroke', '#8893A4');
 
 		//add cities
-		d3.csv('/data/us-cities.csv', function(pointData){
+		d3.csv('D3-demo.io/data/us-cities.csv', function(pointData){
 			svg.selectAll('circle')
 
 				.data(pointData)
