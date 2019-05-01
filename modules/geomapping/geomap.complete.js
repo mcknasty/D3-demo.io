@@ -37,7 +37,7 @@
       .style('stroke', '#8893A4');
 
     //Load in cities data
-    d3.csv("/data/us-cities.csv", function(data) {
+    d3.csv("D3-demo.io/data/us-cities.csv", function(data) {
 
       var format = d3.format(',');
 
